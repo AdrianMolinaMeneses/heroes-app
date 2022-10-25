@@ -23,4 +23,19 @@ export class HeroesService {
 
     return this.http.get<Heroe[]>(`${environment.URL_HOST}/heroes`, { params });
   }
+
+  agregarHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.http.post<Heroe>(`${environment.URL_HOST}/heroes`, heroe);
+  }
+
+  actualizarHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.http.patch<Heroe>(
+      `${environment.URL_HOST}/heroes/${heroe.id}`,
+      heroe
+    );
+  }
+
+  borrarHeroe(id: string): Observable<any> {
+    return this.http.delete<any>(`${environment.URL_HOST}/heroes/${id}`);
+  }
 }
